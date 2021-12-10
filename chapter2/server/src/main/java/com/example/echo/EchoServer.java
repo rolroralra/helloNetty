@@ -1,6 +1,7 @@
 package com.example.echo;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
@@ -29,6 +30,8 @@ public class EchoServer {
         final EchoServerHandler serverHandler = new EchoServerHandler();
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
+        Channel channel;
+        SocketChannel socketChannel;
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(eventLoopGroup)

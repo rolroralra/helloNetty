@@ -1,6 +1,7 @@
 package com.example.echo;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
@@ -43,6 +44,7 @@ public class EchoClient {
                             socketChannel.pipeline().addLast(new EchoClientHandler());
                         }
                     });
+
 
             ChannelFuture channelFuture = bootstrap.connect().sync();
             channelFuture.channel().closeFuture().sync();
